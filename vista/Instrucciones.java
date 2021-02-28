@@ -13,6 +13,7 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
       Thread hilo_bomba; //hilo de ejecuccion
        int movimientoX_bomba = 50; //movimiento en X 
     public Instrucciones() {
+          this.setLocationRelativeTo(null); //pantalla en el centro
         initComponents();
         
         hilo_bomba = new Thread(this);
