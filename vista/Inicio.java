@@ -33,6 +33,7 @@ public class Inicio extends javax.swing.JFrame {
         BT_INICIO.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         BT_INICIO.setForeground(new java.awt.Color(51, 51, 255));
         BT_INICIO.setText("PLAY");
+        BT_INICIO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BT_INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BT_INICIOActionPerformed(evt);
