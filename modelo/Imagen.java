@@ -10,7 +10,7 @@ public class Imagen {
 
     static int contador = 0;
 
-    public void cambiarImagen() {
+    public static void cambiarImagen() {
 
         int velocidad = 2; //segundos
         Timer timer; //instancia

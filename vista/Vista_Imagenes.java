@@ -1,19 +1,14 @@
 package vista;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import modelo.Imagen;
 
 public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
 
     Thread hilo_imagen1;
     int movimientoX_Imgen_botero = 20;
-    static int contador = 0;
-    
+
     public Vista_Imagenes() {
 
         initComponents();
@@ -38,15 +33,15 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(15, 175, 71));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.GridLayout());
 
         Imgen_botero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botero.png"))); // NOI18N
-        jPanel1.add(Imgen_botero, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 109, 503, 389));
+        jPanel1.add(Imgen_botero);
 
         jLabel1.setFont(new java.awt.Font("MV Boli", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(15, 39, 175));
         jLabel1.setText("  IMÁGENES");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 40, 294, -1));
+        jPanel1.add(jLabel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,7 +88,7 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Vista_Imagenes().setVisible(true);
-                cambiarImagen();
+                Imagen.cambiarImagen();
             }
         });
     }
@@ -106,7 +101,7 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
 
     @Override
     public void run() {
-        
+
         while (movimientoX_Imgen_botero <= 500) {
 
             try {// exepcion
@@ -121,61 +116,5 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
             }
         }
     }
-    
-    public static void cambiarImagen() {
 
-        int velocidad = 2; //segundos
-        Timer timer; //instancia
-        TimerTask ejecutar;
-
-        int velmil = velocidad * 1000;
-
-        Vista_Imagenes imagenes = new Vista_Imagenes(); // se llama al jlbel
-        imagenes.setVisible(true);
-
-        ejecutar = new TimerTask() {
-
-            @Override
-            public void run() {
-
-                Icon imagen; //instancia de imagen 
-                    switch (contador) {
-
-                        case 0:
-                            contador = 1;
-                            imagen = new ImageIcon(getClass().getResource("/imagenes/autor.png")); //se declara la imagen
-                            imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
-                            break;
-
-                        case 1:
-
-                        contador = 2;
-                        imagen = new ImageIcon(getClass().getResource("/imagenes/maravillas.png")); //se declara la imagen
-                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
-                        break;
-                        
-                         case 2:
-                        contador = 3;
-                        imagen = new ImageIcon(getClass().getResource("/imagenes/papa.png")); //se declara la imagen
-                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
-                        break;
-                        
-                        case 3:
-                        contador = 0;
-                        imagen = new ImageIcon(getClass().getResource("/imagenes/triunfo.png")); //se declara la imagen
-                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
-                        break;
-                        
-                        default:
-                            System.out.println("No se pudo cargar imágen");
-                    }
-                }
-            
-            
-        };
-
-        timer = new Timer();
-        timer.scheduleAtFixedRate(ejecutar, velmil, velmil); //peridodo de repeticion
-
-    }
 }
