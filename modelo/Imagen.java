@@ -47,14 +47,24 @@ public class Imagen {
                             break;
 
                         case 1:
-                            contador = 2;
-                            imagen = new ImageIcon(getClass().getResource("/imagenes/maravillas.png")); //se declara la imagen
-                            imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
-                            break;
-                        default:
-                            System.out.println("No se pudo cargar imagen");
-                    }
-                    
+
+                        contador = 2;
+                        imagen = new ImageIcon(getClass().getResource("/imagenes/maravillas.png")); //se declara la imagen
+                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
+                        break;
+                        
+                         case 2:
+                        contador = 3;
+                        imagen = new ImageIcon(getClass().getResource("/imagenes/papa.png")); //se declara la imagen
+                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
+                        break;
+                        
+                        case 3:
+                        contador = 4;
+                        imagen = new ImageIcon(getClass().getResource("/imagenes/triunfo.png")); //se declara la imagen
+                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
+                        break;
+
                 }
             }
             
