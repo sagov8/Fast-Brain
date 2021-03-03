@@ -20,7 +20,6 @@ public class Imagen {
         int velocidad = 10; //segundos
         List<Integer> numbers = Arrays.asList(0, 1, 2, 3, 4);
         Collections.shuffle(numbers);
-        System.out.println(((Object) numbers).getClass().getSimpleName());
         Timer timer; //instancia
         TimerTask ejecutar;
 
@@ -38,6 +37,7 @@ public class Imagen {
 
                 for (Integer numero : numbers) {
                     contador = numero;
+                    System.out.println(contador);
                     switch (contador) {
 
                         case 0:
@@ -54,18 +54,14 @@ public class Imagen {
                         default:
                             System.out.println("No se pudo cargar imagen");
                     }
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Imagen.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    
                 }
-
             }
+            
         };
 
         timer = new Timer();
-        timer.scheduleAtFixedRate(ejecutar, null, velmil); //peridodo de repeticion
+        timer.scheduleAtFixedRate(ejecutar, 10000, velmil); //peridodo de repeticion
 
     }
 
