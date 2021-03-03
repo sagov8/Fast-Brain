@@ -1,28 +1,20 @@
-
 package vista;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import modelo.Imagen;
 
+public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
 
-public class Vista_Imagenes extends javax.swing.JFrame  implements Runnable {
-  
     Thread hilo_imagen1;
-     int movimientoX_Imgen_botero= 20;
-     
-     
-     
+    int movimientoX_Imgen_botero = 20;
+
     public Vista_Imagenes() {
-        
-            
+
+        initComponents();
         hilo_imagen1 = new Thread(this);
         hilo_imagen1.start(); // iniciar el hilo
         //distancia de hilo
-        
-        initComponents();
     }
 
     /**
@@ -41,35 +33,15 @@ public class Vista_Imagenes extends javax.swing.JFrame  implements Runnable {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(15, 175, 71));
+        jPanel1.setLayout(new java.awt.GridLayout());
 
         Imgen_botero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botero.png"))); // NOI18N
+        jPanel1.add(Imgen_botero);
 
         jLabel1.setFont(new java.awt.Font("MV Boli", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(15, 39, 175));
         jLabel1.setText("  IMÁGENES");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(Imgen_botero, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(191, 191, 191))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Imgen_botero, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-        );
+        jPanel1.add(jLabel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,6 +88,7 @@ public class Vista_Imagenes extends javax.swing.JFrame  implements Runnable {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Vista_Imagenes().setVisible(true);
+                Imagen.cambiarImagen();
             }
         });
     }
@@ -128,20 +101,20 @@ public class Vista_Imagenes extends javax.swing.JFrame  implements Runnable {
 
     @Override
     public void run() {
-         while(movimientoX_Imgen_botero<=500){
-            
-             try {// exepcion
-                Thread.sleep(100);
-                
-                
-               Imgen_botero.setBounds(movimientoX_Imgen_botero, 30, Imgen_botero.getWidth(),Imgen_botero.getHeight());// setbounds poner un limite entre el ancho y alto
-                
-             movimientoX_Imgen_botero +=15;
-          
 
-             } catch (InterruptedException ex) {
+        while (movimientoX_Imgen_botero <= 500) {
+
+            try {// exepcion
+                Thread.sleep(100);
+
+                Imgen_botero.setBounds(movimientoX_Imgen_botero, 30, Imgen_botero.getWidth(), Imgen_botero.getHeight());// setbounds poner un limite entre el ancho y alto
+
+                movimientoX_Imgen_botero += 15;
+
+            } catch (InterruptedException ex) {
                 Logger.getLogger(Instrucciones.class.getName()).log(Level.SEVERE, null, ex);
             }
-                } 
+        }
     }
+
 }

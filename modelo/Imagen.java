@@ -10,10 +10,9 @@ public class Imagen {
 
     static int contador = 0;
 
-    public static void main(String[] args) {
+    public static void cambiarImagen() {
 
-        int velocidad = 10; //segundos
-
+        int velocidad = 2; //segundos
         Timer timer; //instancia
         TimerTask ejecutar;
 
@@ -28,18 +27,17 @@ public class Imagen {
             public void run() {
 
                 Icon imagen; //instancia de imagen 
+                    switch (contador) {
 
-                switch (contador) {
+                        case 0:
+                            contador = 1;
+                            imagen = new ImageIcon(getClass().getResource("/imagenes/autor.png")); //se declara la imagen
+                            imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
+                            break;
 
-                    case 0:
-                        contador=1;
-                        imagen = new ImageIcon(getClass().getResource("/imagenes/autor.png")); //se declara la imagen
-                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
-                        break;
-                        
                         case 1:
-                        
-                         
+
+                        contador = 2;
                         imagen = new ImageIcon(getClass().getResource("/imagenes/maravillas.png")); //se declara la imagen
                         imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
                         break;
@@ -51,26 +49,21 @@ public class Imagen {
                         break;
                         
                         case 3:
-                       
+                        contador = 0;
                         imagen = new ImageIcon(getClass().getResource("/imagenes/triunfo.png")); //se declara la imagen
                         imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
                         break;
-                
-                        case 4 :
-                       
-                        imagen = new ImageIcon(getClass().getResource("/imagenes/botero.png")); //se declara la imagen
-                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
-                        break;
                         
-                        default: System.out.println("no carga imagen");
+                        default:
+                            System.out.println("No se pudo cargar imágen");
+                    }
                 }
-
-            }
+            
+            
         };
-        
-       timer= new Timer();
-       timer.scheduleAtFixedRate(ejecutar, null, velmil); //peridodo de repeticion
-       
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(ejecutar, velmil, velmil); //peridodo de repeticion
 
     }
 
