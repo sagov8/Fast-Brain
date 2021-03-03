@@ -79,6 +79,7 @@ public class Inicio extends javax.swing.JFrame {
     
         Instrucciones panel=new Instrucciones(); // objeto para abrir la ventana instrucciones
         panel.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BT_INICIOActionPerformed
 
   

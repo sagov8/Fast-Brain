@@ -1,20 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
-/**
- *
- * @author Estudiante
- */
-public class Vista_Imagenes extends javax.swing.JFrame {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import modelo.Imagen;
 
-    /**
-     * Creates new form Vista_Imagenes
-     */
+
+public class Vista_Imagenes extends javax.swing.JFrame  implements Runnable {
+  
+    Thread hilo_imagen1;
+     int movimientoX_Imgen_botero= 20;
+     
+     
+     
     public Vista_Imagenes() {
+        
+            
+        hilo_imagen1 = new Thread(this);
+        hilo_imagen1.start(); // iniciar el hilo
+        //distancia de hilo
+        
         initComponents();
     }
 
@@ -27,17 +34,41 @@ public class Vista_Imagenes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        Imgen_botero = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(15, 175, 71));
+
+        Imgen_botero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botero.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(Imgen_botero, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(Imgen_botero, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +110,26 @@ public class Vista_Imagenes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel Imgen_botero;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+         while(movimientoX_Imgen_botero<=500){
+            
+             try {// exepcion
+                Thread.sleep(100);
+                
+                
+               Imgen_botero.setBounds(movimientoX_Imgen_botero, 30, Imgen_botero.getWidth(),Imgen_botero.getHeight());// setbounds poner un limite entre el ancho y alto
+                
+             movimientoX_Imgen_botero +=15;
+          
+
+             } catch (InterruptedException ex) {
+                Logger.getLogger(Instrucciones.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                } 
+    }
 }

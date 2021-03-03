@@ -59,9 +59,15 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel2.setText("TIEMPO");
 
-        INICIAR.setFont(new java.awt.Font("MV Boli", 0, 12)); // NOI18N
+        INICIAR.setFont(new java.awt.Font("MV Boli", 1, 12)); // NOI18N
         INICIAR.setForeground(new java.awt.Color(51, 51, 255));
         INICIAR.setText("INICIAR");
+        INICIAR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        INICIAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                INICIARActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BT_INICIOLayout = new javax.swing.GroupLayout(BT_INICIO);
         BT_INICIO.setLayout(BT_INICIOLayout);
@@ -73,17 +79,18 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
                         .addGap(152, 152, 152)
                         .addComponent(jLabel1))
                     .addGroup(BT_INICIOLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(BT_INICIOLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BT_INICIOLayout.createSequentialGroup()
-                        .addComponent(Bomba)
-                        .addGap(102, 102, 102)
-                        .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(BT_INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Bomba, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BT_INICIOLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BT_INICIOLayout.setVerticalGroup(
@@ -96,16 +103,12 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(BT_INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BT_INICIOLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Bomba)
-                        .addContainerGap(49, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BT_INICIOLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
+                .addGroup(BT_INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(Bomba)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,11 +119,18 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BT_INICIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(BT_INICIO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void INICIARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIARActionPerformed
+       Vista_Imagenes panel= new Vista_Imagenes();
+       panel.setVisible(true);
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_INICIARActionPerformed
 
    
     public static void main(String args[]) {
@@ -176,18 +186,10 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
                 
                Bomba.setBounds(movimientoX_bomba, 500, Bomba.getWidth(),Bomba.getHeight());// setbounds poner un limite entre el ancho y alto
                 
-                if(devolver){
+              
                     movimientoX_bomba +=15;
                     
-                    if (movimientoX_bomba >=900) {
-                        Bomba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bombaa.gif")));
-                        devolver = false;
-                    }
-                    
-                }else{
-                     movimientoX_bomba -=15;
-                    
-                }
+                 
                   
             } catch (InterruptedException ex) {
                 Logger.getLogger(Instrucciones.class.getName()).log(Level.SEVERE, null, ex);
