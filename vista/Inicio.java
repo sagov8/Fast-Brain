@@ -28,7 +28,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(15, 175, 71));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Estudiante\\Pictures\\logo2.gif")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.gif"))); // NOI18N
 
         BT_INICIO.setFont(new java.awt.Font("MV Boli", 1, 24)); // NOI18N
         BT_INICIO.setForeground(new java.awt.Color(51, 51, 255));
