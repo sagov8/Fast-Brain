@@ -106,6 +106,8 @@ public class Vista_Imagenes extends javax.swing.JFrame
         Cronometro.setFont(new java.awt.Font("MV Boli", 1, 36)); // NOI18N
         Cronometro.setForeground(new java.awt.Color(204, 0, 0));
 
+        puntos.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+
         preguntaLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 12)); // NOI18N

@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon; //cargar imagenes
 import java.util.Timer;
 import java.util.TimerTask; //el tiempo de ejecuccion
+import javax.swing.JOptionPane;
 import vista.Vista_Imagenes;
 
 public class Imagen {
@@ -43,7 +44,7 @@ public class Imagen {
                         break;
 
                     case 2:
-                        contador=3;
+                        contador = 3;
                         imagen = new ImageIcon(getClass().getResource("/imagenes/papa.png")); //se declara la imagen
                         imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
                         break;
@@ -52,6 +53,12 @@ public class Imagen {
                         contador = 4;
                         imagen = new ImageIcon(getClass().getResource("/imagenes/arco.png")); //se declara la imagen
                         imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
+                        break;
+                    case 4:
+                        contador = 5;
+                        imagen = new ImageIcon(getClass().getResource("/imagenes/unnamed.png")); //se declara la imagen
+                        imagenes.Imgen_botero.setIcon(imagen); // de la instancia imagenes se cambia el jlabel
+                        JOptionPane.showMessageDialog(null, "juego terminado");
                         break;
 
                     default:
