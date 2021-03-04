@@ -51,8 +51,6 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="299" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="cronometro" min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="306" max="-2" attributes="0"/>
