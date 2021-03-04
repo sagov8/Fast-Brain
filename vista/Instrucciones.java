@@ -1,6 +1,7 @@
 
 package vista;
 
+import java.applet.AudioClip;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Imagen;
@@ -205,6 +206,15 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         }
         
     }
+    
+     public void sonido(){
+           AudioClip sonido;
+      
+        sonido= java.applet.Applet.newAudioClip(getClass().getResource("/imagenes/POL-go-time-short.wav"));
+        sonido.loop(); 
+
+            
+        }
 
    
 }
