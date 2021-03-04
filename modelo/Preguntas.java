@@ -11,9 +11,6 @@ public class Preguntas extends Thread{
     private ArrayList<String> preguntas = new ArrayList<>();
     static int index = 0;
     JLabel lbl;
-
-    private int valorPregunta = 2;
-    private int puntaje = 0;
     
     public Preguntas(String pregunta) {
         this.pregunta = pregunta;
@@ -34,6 +31,7 @@ public class Preguntas extends Thread{
     public void mostrarPregunta(JLabel lbl, int index){
         lbl.setText(preguntas.get(index));
     }
+
     
     public void agregarPreguntas(){
         preguntas.add("¿A qué autor colombiano pertenece esta obra?");
