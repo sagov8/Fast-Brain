@@ -5,12 +5,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import modelo.Cronometro;
 import modelo.Imagen;
 
 public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
 
     Thread hilo_imagen1;
     int movimientoX_Imgen_botero = 10;
+    int conta=0;
+    int reverse = 60;
 
     public Vista_Imagenes() {
 
@@ -18,6 +21,11 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
         hilo_imagen1 = new Thread(this);
         hilo_imagen1.start(); // iniciar el hilo
         //distancia de hilo
+        Cronometro contador=new Cronometro();
+        
+        cronometro.setText(Integer.toString(contador.getSegundos()));;
+       
+        
         
         ImageIcon imagen=new  ImageIcon("/imagenes/botero.png");
     }
@@ -89,7 +97,9 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
                             .addComponent(jButton3)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(217, 217, 217)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(cronometro, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(306, 306, 306)
                         .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -129,6 +139,12 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_INICIARActionPerformed
+
+    private void cronometroAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_cronometroAncestorRemoved
+      
+        
+    // TODO add your handling code here:
+    }//GEN-LAST:event_cronometroAncestorRemoved
 
     /**
      * @param args the command line arguments
@@ -182,16 +198,28 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
         while (movimientoX_Imgen_botero <= 90) {
 
             try {// exepcion
-                Thread.sleep(100);
+                Thread.sleep(400);
 
                 Imgen_botero.setBounds(movimientoX_Imgen_botero, 150, Imgen_botero.getWidth(), Imgen_botero.getHeight());// setbounds poner un limite entre el ancho y alto
 
                 movimientoX_Imgen_botero +=10;
 
+               
+
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(Instrucciones.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+             
+
+
         }
     }
+    
+   
+    }
+    
+    
 
-}
+
