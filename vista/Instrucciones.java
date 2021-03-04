@@ -3,6 +3,8 @@ package vista;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Imagen;
+
 
 /**
  *
@@ -34,7 +36,7 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         jLabel3 = new javax.swing.JLabel();
         Bomba = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        INICIAR = new javax.swing.JButton();
+        Regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +50,7 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         Reglas.setColumns(20);
         Reglas.setFont(new java.awt.Font("MV Boli", 0, 14)); // NOI18N
         Reglas.setRows(5);
-        Reglas.setText("   \n   1- El jugador tendra 10 segundos para\n   visualizar las imagenes que se encuentran \n   en pantalla.\n   2- Su objetivo es observar cada detalle de la \n   imagen.\n   3- Las imagenes estan clasificadas en personajes \n   o lugares reconocidos.\n   4- El jugador tendra en cada imagen  \n   cuatro preguntas con una sola respuesta.\n   5-Gana el jugador que conteste correctamente las \n   preguntas.\n   6- El tiempo se medira con una bomba,\n   la cual si llega a su limite de 10s \n   explotara y el jugador perdera la partida");
+        Reglas.setText("   \n   1- El jugador tendra 10 segundos para\n   visualizar  cada una de las imagenes que se\n   encuentran  en pantalla.\n   2- Su objetivo es observar cada detalle de la \n   imagen.\n   3- Las imagenes estan clasificadas en personajes \n   o lugares reconocidos.\n   4- El jugador tendra de cada imagen  \n   tres preguntas con una sola respuesta.\n   5-Gana el jugador que conteste correctamente las \n   preguntas.\n   6- El tiempo de respuesta se medira con una \n   bomba, la cual si llega a su limite de 15s \n   explotara y el jugador perdera la partida");
         Reglas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setViewportView(Reglas);
 
@@ -59,13 +61,13 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         jLabel2.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel2.setText("TIEMPO");
 
-        INICIAR.setFont(new java.awt.Font("MV Boli", 1, 12)); // NOI18N
-        INICIAR.setForeground(new java.awt.Color(51, 51, 255));
-        INICIAR.setText("INICIAR");
-        INICIAR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        INICIAR.addActionListener(new java.awt.event.ActionListener() {
+        Regresar.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
+        Regresar.setForeground(new java.awt.Color(51, 51, 255));
+        Regresar.setText("Regresar");
+        Regresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                INICIARActionPerformed(evt);
+                RegresarActionPerformed(evt);
             }
         });
 
@@ -80,16 +82,19 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
                         .addComponent(jLabel1))
                     .addGroup(BT_INICIOLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BT_INICIOLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(BT_INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BT_INICIOLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(BT_INICIOLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(Bomba))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BT_INICIOLayout.setVerticalGroup(
             BT_INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,22 +103,23 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(BT_INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(BT_INICIOLayout.createSequentialGroup()
+                        .addComponent(Regresar)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(BT_INICIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Bomba)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BT_INICIO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BT_INICIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,15 +129,16 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void INICIARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIARActionPerformed
-       Vista_Imagenes panel= new Vista_Imagenes();
-       panel.setVisible(true);
-       this.dispose();
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
+       Inicio panel=new Inicio();
+       panel.setVisible(devolver);
+       dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_INICIARActionPerformed
+    }//GEN-LAST:event_RegresarActionPerformed
 
    
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -166,8 +173,8 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BT_INICIO;
     private javax.swing.JLabel Bomba;
-    private javax.swing.JButton INICIAR;
     private javax.swing.JTextArea Reglas;
+    private javax.swing.JButton Regresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -176,16 +183,17 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
 
     @Override
     public void run() {
+    
         
         while(movimientoX_bomba<=500){
             try {// exepcion
                 Thread.sleep(100);
                 
                 
-               Bomba.setBounds(movimientoX_bomba, 600, Bomba.getWidth(),Bomba.getHeight());// setbounds poner un limite entre el ancho y alto
+               Bomba.setBounds(movimientoX_bomba, 500, Bomba.getWidth(),Bomba.getHeight());// setbounds poner un limite entre el ancho y alto
                 
               
-                    movimientoX_bomba +=15;
+                    movimientoX_bomba +=10;
                     
                  
                   
@@ -197,4 +205,6 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         }
         
     }
+
+   
 }
