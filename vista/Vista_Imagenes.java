@@ -22,7 +22,9 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
         //distancia de hilo
          puntaje+=10;
          puntos.setText(puntaje+"");
+         
         ImageIcon imagen=new  ImageIcon("/imagenes/botero.png");
+       
     }
 
     /**
@@ -254,7 +256,7 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
 
                 movimientoX_Imgen_botero +=10;
 
-               if (conta <= 59) {
+               if (conta <= 9) {
                     conta += 1;
                     reverse -= 1;
                     String numCadena = reverse + "";
@@ -266,6 +268,9 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
                 Logger.getLogger(Instrucciones.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+    }
+    
+   
     }
 
-}
