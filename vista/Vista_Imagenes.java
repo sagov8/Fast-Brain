@@ -5,21 +5,24 @@ import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import modelo.Preguntas;
+import modelo.Puntaje;
 import modelo.Respuesta;
 
 public class Vista_Imagenes extends javax.swing.JFrame
-        implements Runnable{
+        implements Runnable {
 
     Thread hilo_imagen1;
     int movimientoX_Imgen_botero = 10;
 
     Preguntas p;
     Respuesta r;
+    Puntaje punt;
 
     int conta = 0;
     int ronda;
-    int puntaje = 0;
+    int puntaje;
 
     public Vista_Imagenes() {
         initComponents();
@@ -31,8 +34,11 @@ public class Vista_Imagenes extends javax.swing.JFrame
         p.agregarPreguntas();
         p.start();
 
-        this.r = new Respuesta(BT_respuesta1, BT_respuesta2, BT_respuesta3, puntos);
+        this.r = new Respuesta(BT_respuesta1, BT_respuesta2, BT_respuesta3);
         r.start();
+
+        this.punt = new Puntaje(ronda);
+        punt.start();
 
         ImageIcon imagen = new ImageIcon("/imagenes/botero.png");
     }
@@ -73,14 +79,29 @@ public class Vista_Imagenes extends javax.swing.JFrame
         BT_respuesta1.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
         BT_respuesta1.setForeground(new java.awt.Color(51, 51, 255));
         BT_respuesta1.setText("1");
+        BT_respuesta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_respuesta1ActionPerformed(evt);
+            }
+        });
 
         BT_respuesta2.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
         BT_respuesta2.setForeground(new java.awt.Color(51, 51, 255));
         BT_respuesta2.setText("2");
+        BT_respuesta2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_respuesta2ActionPerformed(evt);
+            }
+        });
 
         BT_respuesta3.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
         BT_respuesta3.setForeground(new java.awt.Color(51, 51, 255));
         BT_respuesta3.setText("3");
+        BT_respuesta3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_respuesta3ActionPerformed(evt);
+            }
+        });
 
         Cronometro.setFont(new java.awt.Font("MV Boli", 1, 36)); // NOI18N
         Cronometro.setForeground(new java.awt.Color(204, 0, 0));
@@ -172,6 +193,38 @@ public class Vista_Imagenes extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BT_respuesta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_respuesta1ActionPerformed
+        if (punt.getRonda() == 1) {
+            puntaje++;
+            puntos.setText(Integer.toString(puntaje));
+            BT_respuesta1.doClick(5000);
+        } else if (punt.getRonda() == 5) {
+            puntaje++;
+            puntos.setText(Integer.toString(puntaje));
+            BT_respuesta1.doClick(5000);
+        }
+    }//GEN-LAST:event_BT_respuesta1ActionPerformed
+
+    private void BT_respuesta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_respuesta2ActionPerformed
+        if (punt.getRonda() == 3) {
+            puntaje++;
+            puntos.setText(Integer.toString(puntaje));
+           
+        } else if (punt.getRonda() == 4) {
+            puntaje++;
+            puntos.setText(Integer.toString(puntaje));
+            BT_respuesta2.doClick(5000);
+        }
+    }//GEN-LAST:event_BT_respuesta2ActionPerformed
+
+    private void BT_respuesta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_respuesta3ActionPerformed
+        if (punt.getRonda() == 2) {
+            puntaje++;
+            puntos.setText(Integer.toString(puntaje));
+            BT_respuesta3.doClick(5000);
+        }
+    }//GEN-LAST:event_BT_respuesta3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -226,15 +279,20 @@ public class Vista_Imagenes extends javax.swing.JFrame
     public void run() {
 
         try {// exepcion
+
             Thread.sleep(6000);
 
             Imgen_botero.setBounds(movimientoX_Imgen_botero, 150, Imgen_botero.getWidth(), Imgen_botero.getHeight());// setbounds poner un limite entre el ancho y alto
             p.start();
             r.start();
+            punt.start();
+            if (p.getThreadGroup()== null){
+                JOptionPane.showMessageDialog(null, "Juego Terminado");
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(Instrucciones.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    
+
 }

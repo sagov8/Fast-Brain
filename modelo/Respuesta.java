@@ -19,12 +19,11 @@ public final class Respuesta extends Thread {
     private final ArrayList<String> r4 = new ArrayList<>();
     private final ArrayList<String> r5 = new ArrayList<>();
     JButton btn1, btn2, btn3;
-    JLabel puntos;
     static int index = 0;
     int ronda = 1;
-    int puntaje = 0;
+    int puntaje;
 
-    public Respuesta(JButton bt1, JButton bt2, JButton bt3, JLabel puntaje) {
+    public Respuesta(JButton bt1, JButton bt2, JButton bt3) {
         agregarRespuestas(r1, "Fernando Botero", "Alejandro Obregon", "Omar Rayo");
         agregarRespuestas(r2, "1932", "1935", "1927");
         agregarRespuestas(r3, "Steven Spielberg", "Matt Groening", "Mark Zuckenberg");
@@ -33,7 +32,6 @@ public final class Respuesta extends Thread {
         btn1 = bt1;
         btn2 = bt2;
         btn3 = bt3;
-        puntos = puntaje;
 
     }
 
@@ -86,8 +84,6 @@ public final class Respuesta extends Thread {
             for (ArrayList arrayList : answer) {
 
                 mostrarRespuestas(btn1, btn2, btn3, arrayList);
-                mostrarPuntaje(puntos);
-                ronda++;
                 System.out.println(ronda);
                 Thread.sleep(6000);
             }

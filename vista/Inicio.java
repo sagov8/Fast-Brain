@@ -1,28 +1,27 @@
-
 package vista;
- import java.applet.AudioClip;
+
+import java.applet.AudioClip;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import static modelo.Imagen.cambiarImagen;
+
 /**
  *
  * @author Estudiante
  */
 public class Inicio extends javax.swing.JFrame {
 
-   
     public Inicio() {
         initComponents();
-           sonido();
-        
-        this.setLocationRelativeTo(null); 
-       //pantalla en el centro
+        sonido();
+
+        this.setLocationRelativeTo(null);
+        //pantalla en el centro
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -132,58 +131,49 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_INICIOActionPerformed
-    Vista_Imagenes panel=new Vista_Imagenes();
-    panel.setVisible(true);
-    dispose();
-         
-           cambiarImagen();
+        Vista_Imagenes panel = new Vista_Imagenes();
+        panel.setVisible(true);
+        dispose();
+
+        cambiarImagen();
     }//GEN-LAST:event_BT_INICIOActionPerformed
 
     private void BT_INICIOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_INICIOMouseClicked
-       
-   
+
 // TODO add your handling code here:
     }//GEN-LAST:event_BT_INICIOMouseClicked
 
     private void jLAyudaAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLAyudaAncestorRemoved
-     
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jLAyudaAncestorRemoved
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          Instrucciones panel=new Instrucciones(); // objeto para abrir la ventana instrucciones
+        Instrucciones panel = new Instrucciones(); // objeto para abrir la ventana instrucciones
         panel.setVisible(true);
         this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-  
     public static void main(String args[]) {
-      
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 new Inicio().setVisible(true);
-                
+
             }
         });
-        
-       
-        
-        
-        
-        
-        
-    }
-    
-     public void sonido(){
-           AudioClip sonido;
-      
-        sonido= java.applet.Applet.newAudioClip(getClass().getResource("/imagenes/POL-go-time-short.wav"));
-        sonido.loop(); 
 
-            
-        }
+    }
+
+    public void sonido() {
+        AudioClip sonido;
+
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/imagenes/POL-go-time-short.wav"));
+        sonido.loop();
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_INICIO;
