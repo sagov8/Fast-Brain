@@ -6,18 +6,24 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import modelo.Imagen;
+import modelo.Respuesta;
 
 public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
 
     Thread hilo_imagen1;
+    Thread cronometro;
     int movimientoX_Imgen_botero = 10;
-
+    int time = 60;
+    
     public Vista_Imagenes() {
 
         initComponents();
         hilo_imagen1 = new Thread(this);
         hilo_imagen1.start(); // iniciar el hilo
         //distancia de hilo
+        cronometro = new Thread(this);
+        cronometro.start();
+        
         
         ImageIcon imagen=new  ImageIcon("/imagenes/botero.png");
     }
@@ -164,6 +170,8 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
                
             }
         });
+        Respuesta resp = new Respuesta();
+        System.out.println(""+resp.getAnswer().get(0).get(0));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -175,7 +183,7 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-
+    
     @Override
     public void run() {
 
@@ -193,5 +201,6 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
             }
         }
     }
+    
 
 }
