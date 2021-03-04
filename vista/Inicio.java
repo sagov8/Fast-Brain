@@ -179,7 +179,7 @@ public class Inicio extends javax.swing.JFrame {
            AudioClip sonido;
       
         sonido= java.applet.Applet.newAudioClip(getClass().getResource("/imagenes/POL-go-time-short.wav"));
-        sonido.play(); 
+        sonido.loop();
 
             
         }
