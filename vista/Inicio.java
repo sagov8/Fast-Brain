@@ -74,6 +74,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("MV Boli", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 51, 255));
         jButton1.setText("Ayuda");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -95,7 +96,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLAyuda)
-                    .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,7 +137,7 @@ public class Inicio extends javax.swing.JFrame {
     Vista_Imagenes panel=new Vista_Imagenes();
     panel.setVisible(true);
     dispose();
-          // sonido();
+         
            cambiarImagen();
     }//GEN-LAST:event_BT_INICIOActionPerformed
 
@@ -179,7 +182,7 @@ public class Inicio extends javax.swing.JFrame {
            AudioClip sonido;
       
         sonido= java.applet.Applet.newAudioClip(getClass().getResource("/imagenes/POL-go-time-short.wav"));
-        sonido.loop();
+        sonido.loop(); 
 
             
         }
