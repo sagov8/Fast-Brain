@@ -12,15 +12,16 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
     Thread hilo_imagen1;
     int movimientoX_Imgen_botero = 10;
     int conta=0;
-    int reversa =10;
-
+    int reverse =10;
+    int puntaje;
     public Vista_Imagenes() {
 
         initComponents();
         hilo_imagen1 = new Thread(this);
         hilo_imagen1.start(); // iniciar el hilo
         //distancia de hilo
-        
+         puntaje+=10;
+         puntos.setText(puntaje+"");
         ImageIcon imagen=new  ImageIcon("/imagenes/botero.png");
     }
 
@@ -37,12 +38,17 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
         Imgen_botero = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         INICIAR = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BT_respuesta1 = new javax.swing.JButton();
+        BT_respuesta2 = new javax.swing.JButton();
+        BT_respuesta3 = new javax.swing.JButton();
+        Cronometro = new javax.swing.JLabel();
+        puntos = new javax.swing.JLabel();
+        Preguntas = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel2.setBackground(new java.awt.Color(15, 175, 71));
 
@@ -63,17 +69,35 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 255));
-        jButton1.setText("jButton1");
+        BT_respuesta1.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
+        BT_respuesta1.setForeground(new java.awt.Color(51, 51, 255));
+        BT_respuesta1.setText("1");
+        BT_respuesta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_respuesta1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 255));
-        jButton2.setText("jButton2");
+        BT_respuesta2.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
+        BT_respuesta2.setForeground(new java.awt.Color(51, 51, 255));
+        BT_respuesta2.setText("2");
 
-        jButton3.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(51, 51, 255));
-        jButton3.setText("jButton3");
+        BT_respuesta3.setFont(new java.awt.Font("MV Boli", 0, 20)); // NOI18N
+        BT_respuesta3.setForeground(new java.awt.Color(51, 51, 255));
+        BT_respuesta3.setText("3");
+
+        Cronometro.setFont(new java.awt.Font("MV Boli", 1, 36)); // NOI18N
+        Cronometro.setForeground(new java.awt.Color(204, 0, 0));
+
+        puntos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/puntos.png"))); // NOI18N
+        puntos.setText("jLabel3");
+
+        Preguntas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setFont(new java.awt.Font("MV Boli", 1, 12)); // NOI18N
+        jLabel2.setText("PUNTOS");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sonido (2) (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -81,44 +105,73 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(41, 41, 41)
+                            .addComponent(Imgen_botero, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(26, 26, 26)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(BT_respuesta2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                        .addComponent(BT_respuesta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(BT_respuesta3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Preguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(15, 15, 15))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(55, 55, 55)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Cronometro, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(87, 87, 87)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(Imgen_botero, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(Imgen_botero, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel4)
+                        .addGap(189, 189, 189)
                         .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(Imgen_botero))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(Cronometro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(77, 77, 77))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jButton1)
+                        .addGap(17, 17, 17)
+                        .addComponent(Preguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(BT_respuesta1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(BT_respuesta2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)))
-                .addGap(32, 32, 32)
-                .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                        .addComponent(BT_respuesta3))
+                    .addComponent(Imgen_botero))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(INICIAR, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         getContentPane().add(jPanel2);
@@ -127,13 +180,16 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void INICIARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIARActionPerformed
-        Preguntas preguntas = new Preguntas();
-        preguntas.setVisible(true);
+       
       
         this.dispose();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_INICIARActionPerformed
+
+    private void BT_respuesta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_respuesta1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BT_respuesta1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,13 +228,18 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BT_respuesta1;
+    private javax.swing.JButton BT_respuesta2;
+    private javax.swing.JButton BT_respuesta3;
+    private javax.swing.JLabel Cronometro;
     private javax.swing.JButton INICIAR;
     public javax.swing.JLabel Imgen_botero;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel Preguntas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel puntos;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -188,20 +249,19 @@ public class Vista_Imagenes extends javax.swing.JFrame implements Runnable {
 
             try {// exepcion
                 Thread.sleep(6000);
-
+               
                 Imgen_botero.setBounds(movimientoX_Imgen_botero, 150, Imgen_botero.getWidth(), Imgen_botero.getHeight());// setbounds poner un limite entre el ancho y alto
 
                 movimientoX_Imgen_botero +=10;
 
-                if (conta <= 9) {
+               if (conta <= 59) {
                     conta += 1;
-                    reversa -= 1;
-                    String numCadena = reversa + "";
-                    cronometro.setText(numCadena);
-                      
-                    //Preguntas.setVisible(true);
-
+                    reverse -= 1;
+                    String numCadena = reverse + "";
+                 Cronometro.setText(numCadena);
                 }
+
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(Instrucciones.class.getName()).log(Level.SEVERE, null, ex);
             }
