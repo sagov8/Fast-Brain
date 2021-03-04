@@ -22,7 +22,7 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         
         hilo_bomba = new Thread(this);
         hilo_bomba.start(); // iniciar el hilo
-       sonido();
+       //sonido();
         //distancia de hilo
     }
 
@@ -210,7 +210,7 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
         
     }
     
-     public void sonido(){
+    /* public void sonido(){
            AudioClip sonido;
       
         sonido= java.applet.Applet.newAudioClip(getClass().getResource("/imagenes/POL-go-time-short.wav"));
@@ -218,6 +218,6 @@ public class Instrucciones extends javax.swing.JFrame implements Runnable {
 
             
         }
-
+*/
    
 }
